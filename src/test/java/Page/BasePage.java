@@ -63,7 +63,9 @@ public class BasePage {
 
     public void insertInto(String locatorType, String locator, String text){
         By byType = getByType(locatorType, locator);
-        driver.findElement(byType).sendKeys(text);
+        WebElement elem = driver.findElement(byType);
+        elem.clear();
+        elem.sendKeys(text);
     }
 
     /**
@@ -100,18 +102,21 @@ public class BasePage {
     /**
      * Use this method to go to web page menu item by locator and text
      *
-     * @param itemName
+     * @param itemText
      * @param locator
      */
-    public void goToMenuItem(String itemName, String locatortype, String locator) throws InterruptedException {
-        if (customTry(locatortype, locator)) {
-            List<WebElement> items = driver.findElements(getByType(locatortype, locator));
+    public void goToMenuItem(String itemText, String locatorType, String locator) {
+        if (customTry(locatorType, locator)) {
+            List<WebElement> items = driver.findElements(getByType(locatorType, locator));
+            boolean isItemExist = false;
             for (WebElement item : items) {
-                if (item.getText().equals(itemName)) {
+                if (item.getText().equals(itemText)) {
                     item.click();
+                    isItemExist = true;
                     break;
                 }
             }
+            Assert.assertTrue(isItemExist);
         }
     }
 
@@ -130,5 +135,24 @@ public class BasePage {
      */
     public void explicitlyWait(Function conditions){
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(conditions);
+    }
+
+    public void checkAlertMessage(String message){
+        String actualmessage = driver.switchTo().alert().getText();
+        Assert.assertEquals(actualmessage, message, "The Registration Alert message not match");
+    }
+
+    public void alertAccept(){
+        driver.switchTo().alert().accept();
+    }
+
+    public void getUrl(String URL){
+        driver.get(URL);
+    }
+
+    public void checkElemetText(String locatorType, String locator, String expectedText){
+        WebElement elem = getElement(locatorType, locator);
+        String actualText = elem.getText();
+        Assert.assertEquals(actualText, expectedText, "The expected text from element not mutch");
     }
 }

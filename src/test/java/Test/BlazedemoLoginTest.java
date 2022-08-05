@@ -1,7 +1,7 @@
 package Test;
 
 import Base.SeleniumBase;
-import Page.BlazedemoLoginPage;
+import Page.LoginPage;
 import Utils.Helpers;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class BlazedemoLoginTest extends SeleniumBase {
 
-    BlazedemoLoginPage blazedemoLoginPage;
+    LoginPage blazedemoLoginPage;
     Helpers helpers = new Helpers();
 
     @BeforeClass
@@ -24,7 +24,7 @@ public class BlazedemoLoginTest extends SeleniumBase {
 
     @Test
     public void BlazeDemoTest() {
-        blazedemoLoginPage = new BlazedemoLoginPage(driver);
+        blazedemoLoginPage = new LoginPage(driver);
         String login = helpers.randomStr(6);
         String password = helpers.randomStr(6);
         blazedemoLoginPage.login(login, password);

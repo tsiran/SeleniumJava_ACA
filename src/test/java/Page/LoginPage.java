@@ -1,10 +1,9 @@
 package Page;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
-public class BlazedemoLoginPage {
-    public BlazedemoLoginPage(WebDriver driver) {
+public class LoginPage {
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
     WebDriver driver;
@@ -12,8 +11,11 @@ public class BlazedemoLoginPage {
 
     public void login(String userName, String password){
         basePage  = new BasePage(driver);
-        driver.get("https://www.demoblaze.com/");
         basePage.checkPageTitle("STORE");
         basePage.clickOnElement("id","login2");
+        basePage.insertInto("id", "loginusername", userName);
+        basePage.insertInto("id", "loginpassword", password);
+        basePage.clickOnElement("css", "[onclick='logIn()']");
+        basePage.checkElemetText("id", "nameofuser", "Welcome " + userName);
     }
 }
