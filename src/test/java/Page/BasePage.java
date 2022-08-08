@@ -57,13 +57,11 @@ public class BasePage {
     }
 
     public void clickOnElement(String locatorType, String locator){
-        By byType = getByType(locatorType, locator);
-        driver.findElement(byType).click();
+        getElement(locatorType, locator).click();
     }
 
     public void insertInto(String locatorType, String locator, String text){
-        By byType = getByType(locatorType, locator);
-        WebElement elem = driver.findElement(byType);
+        WebElement elem = getElement(locatorType, locator);
         elem.clear();
         elem.sendKeys(text);
     }
@@ -89,7 +87,7 @@ public class BasePage {
         int attempts = 0;
         while (attempts < 5) {
             try {
-                driver.findElement(getByType(locatorType, locator)).click();
+                getElement(locatorType, locator).click();
                 result = true;
                 break;
             } catch (Exception e) {
@@ -107,7 +105,7 @@ public class BasePage {
      */
     public void goToMenuItem(String itemText, String locatorType, String locator) {
         if (customTry(locatorType, locator)) {
-            List<WebElement> items = driver.findElements(getByType(locatorType, locator));
+            List<WebElement> items = getElements(locatorType, locator);
             boolean isItemExist = false;
             for (WebElement item : items) {
                 if (item.getText().equals(itemText)) {

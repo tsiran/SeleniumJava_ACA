@@ -36,7 +36,6 @@ public class CheckMonitorPriceTest {
         basePage.getUrl("https://www.demoblaze.com/");
         signUpPage.registration(username, password);
         homePage.goToHomePage();
-
     }
 
     @Test
