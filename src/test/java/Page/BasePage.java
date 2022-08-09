@@ -118,6 +118,21 @@ public class BasePage {
         }
     }
 
+    public void verifyMenuItemText(String itemText, String locatorType, String locator) {
+        if (customTry(locatorType, locator)) {
+            List<WebElement> items = getElements(locatorType, locator);
+            boolean isItemExist = false;
+            for (WebElement item : items) {
+                if (item.getText().equals(itemText)) {
+                    isItemExist = true;
+                    Assert.assertTrue(isItemExist);
+                    break;
+                }
+            }
+            Assert.assertTrue(isItemExist);
+        }
+    }
+
     /**
      * Use this method to set delay by seconds between steps.
      * @param seconds
@@ -135,7 +150,8 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(conditions);
     }
 
-    public void checkAlertMessage(String message){
+    public void checkAlertMessage(String message) throws InterruptedException{
+        delay(1);
         String actualmessage = driver.switchTo().alert().getText();
         Assert.assertEquals(actualmessage, message, "The Registration Alert message not match");
     }

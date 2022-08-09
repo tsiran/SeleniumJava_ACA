@@ -11,7 +11,7 @@ public class SignUpPage {
         this.driver = driver;
     }
 
-    public void registration(String username, String password){
+    public void registration(String username, String password) throws InterruptedException {
         basePage = new BasePage(driver);
         basePage.clickOnElement("id", "signin2");
         basePage.insertInto("id", "sign-username", username);

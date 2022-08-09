@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/gevor/OneDrive/Documents/ACA/QA_Automation/AutomationLessons/SeleniumJava_ACA">
+        <classes>
+            <class name="Test.BlazedemoLoginTest">
+                <methods>
+                    <include name="BlazeDemoTest"/>
+                </methods>
+            </class>
+            <class name="Test.CheckMonitorPriceTest">
+                <methods>
+                    <include name="testCheckMonitorPrice"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -4,13 +4,16 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage {
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-    }
     WebDriver driver;
     BasePage basePage;
 
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+
     public void goToHomePage() {
+        basePage = new BasePage(driver);
         basePage.goToMenuItem("Home", "css",
                 "[class='nav-link']");
     }
