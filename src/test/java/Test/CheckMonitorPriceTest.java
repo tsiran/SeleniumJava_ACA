@@ -6,14 +6,8 @@ import Page.HomePage;
 import Page.MonitordPage;
 import Page.SignUpPage;
 import Utils.Helpers;
-import org.apache.commons.lang3.time.CalendarUtils;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import static io.restassured.RestAssured.given;
 
 public class CheckMonitorPriceTest extends SeleniumBase {
 
