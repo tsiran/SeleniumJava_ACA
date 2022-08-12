@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -108,7 +109,7 @@ public class BasePage {
             List<WebElement> items = getElements(locatorType, locator);
             boolean isItemExist = false;
             for (WebElement item : items) {
-                if (item.getText().equals(itemText)) {
+                if (item.getText().contains(itemText)) {
                     item.click();
                     isItemExist = true;
                     break;
